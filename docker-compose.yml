@@ -1,6 +1,16 @@
 version: "3.3"
 
 services:
+    backend:
+        build: 
+            context: "./backend"
+            dockerfile: "./dockerfile"
+        command: /start-reload.sh
+        labels:
+            - "traefik.enable=true"
+            - "traefik.http.routers.whoami.rule=Host(`localhost`) && PathPrefix(`/docs`, `/api`, `/redoc`)"
+        volumes:
+            - ./backend/app:/app
     traefik:
         image: "traefik:v2.2.0"
         command:
