@@ -1,6 +1,6 @@
 import os
 
-API_V1_STR = "/api/v1"
+PROJECT_NAME=os.environ["PROJECT_NAME"]
 
 POSTGRES_USER = os.environ["POSTGRES_USER"]
 POSTGRES_PASSWORD = os.environ["POSTGRES_PASSWORD"]
