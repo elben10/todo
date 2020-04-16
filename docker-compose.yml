@@ -6,11 +6,29 @@ services:
             context: "./backend"
             dockerfile: "./dockerfile"
         command: /start-reload.sh
+        depends_on: 
+            - db
+        env_file: 
+            - ./.postgres.env
         labels:
             - "traefik.enable=true"
-            - "traefik.http.routers.whoami.rule=Host(`localhost`) && PathPrefix(`/docs`, `/api`, `/redoc`)"
+            - "traefik.http.routers.backend.rule=Host(`localhost`) && PathPrefix(`/docs`, `/api`, `/redoc`)"
         volumes:
             - ./backend/app:/app
+    db:
+        env_file: 
+            - ./.postgres.env
+        image: postgres:12
+    pgadmin:
+        depends_on: 
+            - db
+        env_file: 
+            - ./.pgadmin.env
+        image: dpage/pgadmin4
+        labels:
+            - "traefik.http.services.pgadmin.loadbalancer.server.port=5050"
+            - "traefik.enable=true"
+            - "traefik.http.routers.pgadmin.rule=Host(`pgadmin.localhost`)"
     traefik:
         image: "traefik:v2.2.0"
         command:
