@@ -5,6 +5,7 @@ from sqlalchemy.orm import relationship
 
 from app.db.base_class import Base
 
+
 class Todo(Base):
     id = Column(Integer, index=True, primary_key=True)
     created_at = Column(DateTime, default=datetime.utcnow, index=True)
