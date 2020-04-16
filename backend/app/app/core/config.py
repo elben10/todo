@@ -1,6 +1,6 @@
 import os
 
-PROJECT_NAME=os.environ["PROJECT_NAME"]
+PROJECT_NAME = os.environ["PROJECT_NAME"]
 
 POSTGRES_USER = os.environ["POSTGRES_USER"]
 POSTGRES_PASSWORD = os.environ["POSTGRES_PASSWORD"]
