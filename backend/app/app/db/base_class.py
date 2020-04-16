@@ -5,4 +5,4 @@ class CustomBase(object):
     def __tablename__(cls):
         return cls.__name__.lower()
 
-Base = declarative_base(bind=CustomBase)
+Base = declarative_base(cls=CustomBase)
