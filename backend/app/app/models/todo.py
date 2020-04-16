@@ -10,5 +10,6 @@ class Todo(Base):
     created_at = Column(DateTime, default=datetime.utcnow, index=True)
     title = Column(String, index=True)
     description = Column(String, index=True)
+    completed = Column(Boolean, default=False, index=True)
     owner_id = Column(Integer, ForeignKey("user.id"))
     owner = relationship("User", back_populates="items")
