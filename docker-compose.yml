@@ -9,6 +9,7 @@ services:
         depends_on: 
             - db
         env_file: 
+            - ./.backend.env
             - ./.postgres.env
         labels:
             - "traefik.enable=true"
